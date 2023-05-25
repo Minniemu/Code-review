@@ -4,6 +4,9 @@ permissions:
   contents: read
   pull-requests: write
 
+env:
+  GITHUB_TOKEN: ${{ secrets.ACCES_TOKEN }}
+
 on:
   pull_request:
     types: [opened, reopened, synchronize]
@@ -18,7 +21,7 @@ jobs:
     steps:
       - uses: anc95/ChatGPT-CodeReview@main
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCES_TOKEN }}
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           # Optional
           LANGUAGE: Chinese
