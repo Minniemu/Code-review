@@ -11,7 +11,7 @@ on:
   push:
 jobs:
   test:
-    if: ${{ contains(github.event.*.labels.*.name, 'gpt review') }} # Optional; to run only when a label is attached
+#   if: ${{ contains(github.event.*.labels.*.name, 'gpt review') }} # Optional; to run only when a label is attached
 #     if : ${{ contains(fromJSON('["push", "pull_request"]'), github.event_name)  }}
 #     if: $ true
     runs-on: ubuntu-latest
