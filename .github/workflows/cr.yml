@@ -8,7 +8,7 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
   workflow_dispatch:
-
+  push:
 jobs:
   test:
     if: ${{ contains(github.event.*.labels.*.name, 'gpt review') }} # Optional; to run only when a label is attached
