@@ -5,7 +5,7 @@ permissions:
   pull-requests: write
 
 env:
-  GITHUB_TOKEN: ${{ secrets.ACCES_TOKEN }}
+  ACCESS_TOKEN: ${{ secrets.ACCES_TOKEN }}
 
 on:
   pull_request:
