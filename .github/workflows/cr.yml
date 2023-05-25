@@ -1,0 +1,25 @@
+name: Code Review
+
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  test:
+    if: ${{ contains(github.event.*.labels.*.name, 'gpt review') }} # Optional; to run only when a label is attached
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anc95/ChatGPT-CodeReview@main
+        env:
+          GITHUB_TOKEN: ${{ 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 }}
+          OPENAI_API_KEY: ${{ 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 }}
+          # Optional
+          LANGUAGE: Chinese
+          OPENAI_API_ENDPOINT: https://api.openai.com/v1
+          MODEL:
+          top_p: 1
+          temperature: 1
