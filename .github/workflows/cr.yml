@@ -4,9 +4,6 @@ permissions:
   contents: read
   pull-requests: write
 
-env:
-  GITHUB_TOKEN: ${{ secrets.ACCES_TOKEN }}
-
 on:
   pull_request:
     types: [opened, reopened, synchronize]
@@ -14,14 +11,12 @@ on:
   push:
 jobs:
   test:
-#   if: ${{ contains(github.event.*.labels.*.name, 'gpt review') }} # Optional; to run only when a label is attached
-#     if : ${{ contains(fromJSON('["push", "pull_request"]'), github.event_name)  }}
-#     if: $ true
+  #   if: ${{ contains(github.event.*.labels.*.name, 'gpt review') }} # Optional; to run only when a label is attached
     runs-on: ubuntu-latest
     steps:
       - uses: anc95/ChatGPT-CodeReview@main
         env:
-          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          GITHUB_TOKEN:  ${{ secrets.ACCES_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           # Optional
           LANGUAGE: Chinese
